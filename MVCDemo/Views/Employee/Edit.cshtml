@@ -1,0 +1,39 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit";
+    SelectList depts = new SelectList(ViewBag.all_departments , "Id" , "Name");
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <input type="file" asp-for="Image" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Position"></label>
+        <input asp-for="Position" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="DeptId"></label>
+        <select asp-for="DeptId" asp-items="depts" class="form-control">
+        
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>

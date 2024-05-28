@@ -1,0 +1,52 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].MinDegree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Course course in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => course.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => course.Degree)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => course.MinDegree)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => course.Department.Name)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@course.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@course.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

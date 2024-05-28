@@ -1,0 +1,26 @@
+﻿@model List<CourseResultViewModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<a href="/CourseResult/Create" class="btn btn-success">Create</a>
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Id</td>
+        <td>Course Name</td>
+        <td>Trainee Name</td>
+        <td>Course Degree</td>
+        <td></td>
+    </tr>
+    
+    @foreach (CourseResultViewModel courseResult in Model)
+    {
+        <tr style="color:@courseResult.Color;">
+            <td>@courseResult.Id</td>
+            <td>@courseResult.Course_Name</td>
+            <td>@courseResult.Trainee_Name</td>
+            <td>@courseResult.Course_Degree</td>
+            <td><a href="/CourseResult/Create" class="btn btn-success">Edit</a></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,43 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" value="@Model?.Name" class="form-control" />
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="number" name="Age" value="@Model?.Age" class="form-control" />
+    </div>
+    <div>
+        <label>Address</label>
+        <input type="text" name="Address" value="@Model?.Address" class="form-control" />
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="file" name="Image" value="@Model?.Image" class="form-control" />
+    </div>
+    <div>
+        <label>Position</label>
+        <input type="text" name="Position" value="@Model?.Position" class="form-control" />
+    </div>
+    <div>
+        <label>Salary</label>
+        <input type="number" name="Salary" value="@Model?.Salary" class="form-control" />
+    </div>
+    <div>
+        <label>Department Id</label>
+        <input type="number" name="DeptId" value="@Model?.DeptId" class="form-control" />
+
+        @* <select name="DeptId">
+            @foreach (Department dept in ViewBag.all_departments)
+            {
+                <option id="@dept.Id" value="@dept.Name">@dept.Name</option>
+            }
+        </select> *@
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+</form>

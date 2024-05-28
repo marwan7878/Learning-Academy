@@ -1,0 +1,26 @@
+﻿@model List<InstructorViewModel>
+@{
+    int i = 1;
+}
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Salary</td>
+        <td>Image</td>
+        <td>Course</td>
+        <td>Department</td>
+    </tr>
+    @foreach (var instructor in Model)
+    {
+        <tr>
+            <td>@i++</td>
+            <td>@instructor.Name</td>
+            <td>@instructor.Image</td>
+            <td>@instructor.Salary</td>
+            <td>@instructor.Course_Name</td>
+            <td>@instructor.Department_Name</td>
+            <td><img src="/@instructor.Image" style="width:100px;" /></td>
+        </tr>
+    }
+</table>

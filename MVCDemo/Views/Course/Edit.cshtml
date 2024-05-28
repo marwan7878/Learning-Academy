@@ -1,0 +1,12 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Edit";
+    SelectList all_depts = new SelectList(ViewBag.all_departments,nameof(Department.Id),nameof(Department.Name));
+    ViewData["btn_name"] = "Save";
+    ViewData["all_depts"] = all_depts;
+}
+<partial name="_FormInfoPartial" view-data="ViewData" model="Model"/>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

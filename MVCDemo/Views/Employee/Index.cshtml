@@ -1,0 +1,59 @@
+﻿@model List<Employee>
+
+@{
+    Layout = "_MyLayout";
+}
+
+@section Scripts{
+<a href="/Employee/Create" class="btn btn-success">Create</a>
+
+}
+<a href="/Employee/Create" class="btn btn-success">Create</a>
+
+<form action="/Employee/Search" >
+    <input type="text" name="Name" class="form-control" />
+    <button type="submit">search</button>
+</form>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Salary</td>
+        <td>Department</td>
+        <td></td>
+    </tr>
+    @foreach (Employee employee in Model)
+    {
+        <tr>
+            <td>@employee.Id</td>
+            <td>@employee.Name</td>
+            <td>@employee.Salary</td>
+            <td>@employee.Department.Name</td>
+            <td>
+                <a href="/Employee/Edit/@employee.Id" class="btn btn-primary">Edit</a>
+                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h1>Delete Employee</h1>
+                                <p>Are you sure want to delete this Employee?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <form asp-action="Delete" asp-route-id="@employee.Id">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

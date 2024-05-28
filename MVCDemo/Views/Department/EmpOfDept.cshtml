@@ -1,0 +1,41 @@
+﻿@model List<Department>
+@{
+	ViewData["Title"] = "EmpOfDept";
+	SelectList deptList = new SelectList(Model, "Id", "Name");
+}
+
+<h1>Employees of Department</h1>
+
+<select name="deptId" id="deptId" asp-items="deptList" onchange="GetData()" class="form-control">
+	<option value="0">-- Select Department --</option>
+</select>
+
+<select name="empId" id="empId" class="form-control">
+	
+</select>
+<a href="#" onclick="test()">test</a>
+@section Scripts{
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+
+	<script>
+		function test() {
+			event.preventDefault();
+		}
+		function GetData() {
+			var deptId = document.getElementById("deptId").value;
+			event.preventDefault();
+			$.ajax({
+				url:"/Department/getEmployees?deptId="+deptId,
+				success: function (result) {
+
+					document.getElementById("empId").innerHTML = "";
+					for (let i of result) {
+						document.getElementById("empId").innerHTML += 
+						"<option value='"+i.id+"'>"+i.name+"</option>";
+					}
+				}
+			})
+
+		}
+	</script>
+}

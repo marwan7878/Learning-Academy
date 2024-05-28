@@ -1,0 +1,29 @@
+﻿@model Course
+
+<form method="post">
+    <div asp-validation-summary="All">
+    </div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Degree"></label>
+        <input asp-for="Degree" type="number" class="form-control" />
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="MinDegree"></label>
+        <input asp-for="MinDegree" type="number" class="form-control" />
+        <span asp-validation-for="MinDegree" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Department"></label>
+        <select asp-for="Dept_Id" asp-items="@(ViewData["all_depts"] as SelectList)" class="form-control">
+            <option value="0">--Select department--</option>
+        </select>
+        <span asp-validation-for="Dept_Id" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">@ViewData["btn_name"]</button>
+</form>
