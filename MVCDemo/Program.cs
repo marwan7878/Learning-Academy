@@ -1,4 +1,7 @@
 using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
+using MVCDemo.Models;
+using MVCDemo.Repositories;
 
 namespace MVCDemo
 {
@@ -17,6 +20,9 @@ namespace MVCDemo
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
             });
+
+			builder.Services.AddScoped<DBEntity>();
+			builder.Services.AddScoped<IDepartmentRepository, DepartmentMemoryRepository>();
 
             var app = builder.Build();
 
