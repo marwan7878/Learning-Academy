@@ -13,7 +13,11 @@ namespace MVCDemo.Models
         public DbSet<CourseResult> CourseResult { get; set; }
         public DbSet<Instructor> Instructor { get; set; }
 
-        public DBEntity()
+        public DBEntity():base()
+        {
+
+        }
+        public DBEntity(DbContextOptions options):base(options)
         {
 
         }
