@@ -15,6 +15,7 @@ namespace MVCDemo.Controllers
 		}
         public IActionResult EmpOfDept()
         {
+            ViewBag.ID = repositoryDepartment.ID;
             return View(repositoryDepartment.GetAll());
         }
     }

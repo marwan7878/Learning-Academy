@@ -1,10 +1,14 @@
-﻿@model List<Department>
+﻿@using MVCDemo.Repositories
+@inject IDepartmentRepository dprepo
+@model List<Department>
 @{
 	ViewData["Title"] = "EmpOfDept";
 	SelectList deptList = new SelectList(Model, "Id", "Name");
 }
 
 <h1>Employees of Department</h1>
+<h1>@ViewBag.ID</h1>
+<h1>@dprepo.ID</h1>
 
 <select name="deptId" id="deptId" asp-items="deptList" onchange="GetData()" class="form-control">
 	<option value="0">-- Select Department --</option>

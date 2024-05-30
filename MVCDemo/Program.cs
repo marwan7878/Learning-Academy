@@ -21,12 +21,14 @@ namespace MVCDemo
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
             });
 
-            builder.Services.AddDbContext<DBEntity>();
+            builder.Services.AddDbContext<DBEntity>(options=>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("cs"))
+                );
 
             //AddSingletone >> create object per project 
             //AddScoped >> create object per request 
             //AddTransient >> create object per injection (view , method and constructor) 
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddSingleton<IDepartmentRepository, DepartmentRepository>();
 
             var app = builder.Build();
 
