@@ -15,6 +15,7 @@ namespace MVCDemo
 
             // Add services to the container.
             builder.Services.AddControllersWithViews(
+                //add filter global
                 options=>options.Filters.Add(new HandleErrorAttribute())
                 );
             

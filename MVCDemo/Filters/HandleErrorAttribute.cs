@@ -7,9 +7,12 @@ namespace MVCDemo.Filters
 	{
 		public void OnException(ExceptionContext context)
 		{
-			ContentResult contentResult = new ContentResult();
-			contentResult.Content = "Maro is not here";
-			context.Result = contentResult;
+			//ContentResult contentResult = new ContentResult();
+			//contentResult.Content = "Maro is not here";
+			//context.Result = contentResult;
+			ViewResult viewResult = new ViewResult();
+			viewResult.ViewName = "Error";
+			context.Result = viewResult;
 		}
 	}
 }
