@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
+using MVCDemo.Filters;
 using MVCDemo.Models;
 using MVCDemo.Repositories;
 
@@ -12,7 +14,9 @@ namespace MVCDemo
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(
+                options=>options.Filters.Add(new HandleErrorAttribute())
+                );
             
             builder.Services.AddDistributedMemoryCache();
 
@@ -28,7 +32,7 @@ namespace MVCDemo
             //AddSingletone >> create object per project 
             //AddScoped >> create object per request 
             //AddTransient >> create object per injection (view , method and constructor) 
-            builder.Services.AddSingleton<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
             var app = builder.Build();
 
