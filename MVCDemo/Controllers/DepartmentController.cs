@@ -19,7 +19,8 @@ namespace MVCDemo.Controllers
             ViewBag.ID = repositoryDepartment.ID;
             return View(repositoryDepartment.GetAll());
         }
-        //[HandleError] filter 
+        [HandleError] //filter
+        [MyOwn]
         public IActionResult Exception()
         {
             //return Content("Ssssss");

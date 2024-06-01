@@ -12,6 +12,7 @@ namespace MVCDemo.Models
         public DbSet<Trainee> Trainee { get; set; }
         public DbSet<CourseResult> CourseResult { get; set; }
         public DbSet<Instructor> Instructor { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         public DBEntity():base()
         {
@@ -27,7 +28,6 @@ namespace MVCDemo.Models
             optionsBuilder.UseSqlServer("Data Source=MAROOO;Initial Catalog=MVCDemo;Integrated Security=True;Encrypt=False");
             base.OnConfiguring(optionsBuilder);
         }
-        public DbSet<MVCDemo.ViewModels.CourseResultViewModel> CourseResultViewModel { get; set; } = default!;
-
+        
     }
 }
