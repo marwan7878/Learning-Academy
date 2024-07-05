@@ -15,13 +15,14 @@ namespace MVCDemo.Controllers
                 Include(e => e.Trainee).ToList();
             
             //add data to session state that remain 20mins
-            HttpContext.Session.SetString("Name","Marooo");
+            HttpContext.Session.SetString("Name","Maroo");
 
             //add data to cookie without middleware or services
-            HttpContext.Response.Cookies.Append("agee", "22");
+            HttpContext.Response.Cookies.Append("age", "22");
             //make expiration date for cookies
             CookieOptions cookieOptions = new CookieOptions();
             cookieOptions.Expires = DateTimeOffset.Now.AddDays(1);
+            //add options to cookie 
             HttpContext.Response.Cookies.Append("Agewithoptions","33",cookieOptions);
 
             List<CourseResultViewModel> courseResultsVM = new List<CourseResultViewModel>();
@@ -41,6 +42,10 @@ namespace MVCDemo.Controllers
                 courseResultsVM.Add(temp);
             }
             return View(courseResultsVM);
+        }
+        public string getSessionData(int tid , int cid)
+        {
+            return HttpContext.Session.GetString("Name") + "," + Request.Cookies["age"];
         }
         public IActionResult ShowResult(int tid , int cid)
         {
