@@ -18,7 +18,7 @@ namespace MVCDemo.Controllers
             HttpContext.Session.SetString("Name","Marooo");
 
             //add data to cookie without middleware or services
-            HttpContext.Response.Cookies.Append("age", "22");
+            //HttpContext.Response.Cookies.Append("age", "22");
 
             List<CourseResultViewModel> courseResultsVM = new List<CourseResultViewModel>();
             foreach (CourseResult courseResult in courseResults)
