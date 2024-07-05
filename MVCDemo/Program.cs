@@ -17,7 +17,7 @@ namespace MVCDemo
             builder.Services.AddControllersWithViews(
                 //add filter global
                 options=>options.Filters.Add(new HandleErrorAttribute())
-                );
+            );
             
             builder.Services.AddDistributedMemoryCache();
 

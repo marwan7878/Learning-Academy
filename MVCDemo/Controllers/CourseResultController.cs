@@ -14,7 +14,11 @@ namespace MVCDemo.Controllers
             List<CourseResult> courseResults = context.CourseResult.Include(e => e.Course).
                 Include(e => e.Trainee).ToList();
             
+            //add data to session state that remain 20mins
             HttpContext.Session.SetString("Name","Marooo");
+
+            //add data to cookie without middleware or services
+            HttpContext.Response.Cookies.Append("age", "22");
 
             List<CourseResultViewModel> courseResultsVM = new List<CourseResultViewModel>();
             foreach (CourseResult courseResult in courseResults)
